@@ -15,12 +15,16 @@ $(document).ready(function() {
         console.log("THIS IS NOT WORKING");
       }
       console.log(data);
+
+      var latitude = data[0].latitude;
+      var longitude = data[0].longitude;
+
+      console.log(latitude);
+      console.log(longitude);
     })
 
-    var latitude;
-    var longitude;
-
-    for (var i = 0; i < data.length; i++) {
-      latitude 
-    }
+    // for (var i = 0; i < data.length; i++) {
+    //   latitude = data[i].latitude;
+    //   longitude = data[i].longitude;
+    // }
 })
