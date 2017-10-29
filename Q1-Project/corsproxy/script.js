@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log('this is working');
 
   var linkH = "https://g-flutrack.herokuapp.com/";
   var search = '?s=feverANDcoughORfever';
@@ -12,19 +11,38 @@ $(document).ready(function() {
     $xhr.done(function(data) {
 
       if ($xhr.status !== 200) {
-        console.log("THIS IS NOT WORKING");
       }
       console.log(data);
+      console.log(data[0].tweet_text);
 
-      var latitude = data[0].latitude;
-      var longitude = data[0].longitude;
+      // add markers to map
+        for (var i = 0; i < data.length; i++) {
+          var latitude = data[i].latitude;
+          var longitude = data[i].longitude;
+          var tweet = data[i].tweet_text;
+          // var coords = data[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(latitude, longitude);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+          });
+          marker.setMap(map);
+          attachSecretMessage(marker, tweet);
+        }
+      // add event listenter to markers to get tweets
+      function attachSecretMessage(marker, secretMessage) {
+        var infowindow = new google.maps.InfoWindow({
+          content: secretMessage
+        });
 
-      console.log(latitude);
-      console.log(longitude);
+        marker.addListener('mouseover', function() {
+          infowindow.open(marker.get('map'), marker);
+        });
+        marker.addListener('mouseout', function() {
+          infowindow.close();
+        })
+      }
+
+
     })
-
-    // for (var i = 0; i < data.length; i++) {
-    //   latitude = data[i].latitude;
-    //   longitude = data[i].longitude;
-    // }
 })
