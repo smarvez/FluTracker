@@ -1,0 +1,37 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+
+}
+
+.header {
+  height: 10%;
+  width: 100%;
+}
+
+#map {
+  border: 2px solid black;
+  /*margin: 10px;*/
+  height: 70%;
+  width: 100%;
+}
+
+.bottom-left {
+  margin: 10px;
+}
+
+#slider {
+   /*border: 2px solid red;*/
+   height: 12px;
+   width: 100%;
+}
+
+.bottom-right {
+
+}
