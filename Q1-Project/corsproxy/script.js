@@ -47,26 +47,6 @@ $(document).ready(function() {
       var todaysDate = today.getDate();
       console.log(todaysDate);
 
-      // for (var j = 0; j < data.length; j++) {
-      //   var latitude = data[j].latitude;
-      //   var longitude = data[j].longitude;
-      //   var tweet = data[j].tweet_text;
-      //   var image = "Sick_Emoji.png";
-      //   var date = new Date(data[j].tweet_date * 1000);
-      //   var day = date.getDate();
-      //   var daysAgo = (todaysDate - day);
-      //   var latLng = new google.maps.LatLng(latitude, longitude);
-      //   var marker = new google.maps.Marker({
-      //     position: latLng,
-      //     map: map,
-      //     icon: image
-      //   });
-      //   if (daysAgo === 0) {
-      //     marker.setMap(map);
-      //     attachSecretMessage(marker, tweet);
-      //   }
-      // }
-
       // add event listenter to markers to get tweets
       function attachSecretMessage(marker, secretMessage) {
         var infowindow = new google.maps.InfoWindow({
@@ -82,29 +62,180 @@ $(document).ready(function() {
       }
       $( function() {
         $( "#slider" ).slider({
+          animate: "fast",
           range: "max",
           min: 0,
           max: 7,
-          value: 3,
+          value: 0,
           change: function( event, ui ) {
             $( "#amount" ).val( ui.value );
-            for (var j = 0; j < data.length; j++) {
-              var latitude = data[j].latitude;
-              var longitude = data[j].longitude;
-              var tweet = data[j].tweet_text;
-              var image = "Sick_Emoji.png";
-              var date = new Date(data[j].tweet_date * 1000);
-              var day = date.getDate();
-              var daysAgo = (todaysDate - day);
-              var latLng = new google.maps.LatLng(latitude, longitude);
-              if (daysAgo === 0) {
-                var marker = new google.maps.Marker({
-                  position: latLng,
-                  map: map,
-                  icon: image
-                });
-                marker.setMap(map);
-                attachSecretMessage(marker, tweet);
+            if (ui.value === 0) {
+              for (var j = 0; j < data.length; j++) {
+                var latitude = data[j].latitude;
+                var longitude = data[j].longitude;
+                var tweet = data[j].tweet_text;
+                var image = "Sick_Emoji.png";
+                var date = new Date(data[j].tweet_date * 1000);
+                var day = date.getDate();
+                var daysAgo = (todaysDate - day);
+                var latLng = new google.maps.LatLng(latitude, longitude);
+                if (daysAgo === 0) {
+                  // ui.value = 0;
+                  var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: image
+                  });
+                  marker.setMap(map);
+                  attachSecretMessage(marker, tweet);
+                }
+              }
+            }
+            if (ui.value === 1) {
+              for (var j = 0; j < data.length; j++) {
+                var latitude = data[j].latitude;
+                var longitude = data[j].longitude;
+                var tweet = data[j].tweet_text;
+                var image = "Sick_Emoji.png";
+                var date = new Date(data[j].tweet_date * 1000);
+                var day = date.getDate();
+                var daysAgo = (todaysDate - day);
+                var latLng = new google.maps.LatLng(latitude, longitude);
+                if (daysAgo === 1) {
+                  var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: image
+                  });
+                  marker.setMap(map);
+                  attachSecretMessage(marker, tweet);
+                }
+              }
+            }
+            if (ui.value === 2) {
+              for (var j = 0; j < data.length; j++) {
+                var latitude = data[j].latitude;
+                var longitude = data[j].longitude;
+                var tweet = data[j].tweet_text;
+                var image = "Sick_Emoji.png";
+                var date = new Date(data[j].tweet_date * 1000);
+                var day = date.getDate();
+                var daysAgo = (todaysDate - day);
+                var latLng = new google.maps.LatLng(latitude, longitude);
+                if (daysAgo === 2) {
+                  var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: image
+                  });
+                  marker.setMap(map);
+                  attachSecretMessage(marker, tweet);
+                }
+              }
+            }
+            if (ui.value === 3) {
+              for (var j = 0; j < data.length; j++) {
+                var latitude = data[j].latitude;
+                var longitude = data[j].longitude;
+                var tweet = data[j].tweet_text;
+                var image = "Sick_Emoji.png";
+                var date = new Date(data[j].tweet_date * 1000);
+                var day = date.getDate();
+                var daysAgo = (todaysDate - day);
+                var latLng = new google.maps.LatLng(latitude, longitude);
+                if (daysAgo === 3) {
+                  var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: image
+                  });
+                  marker.setMap(map);
+                  attachSecretMessage(marker, tweet);
+                }
+              }
+            }
+            if (ui.value === 4) {
+              for (var j = 0; j < data.length; j++) {
+                var latitude = data[j].latitude;
+                var longitude = data[j].longitude;
+                var tweet = data[j].tweet_text;
+                var image = "Sick_Emoji.png";
+                var date = new Date(data[j].tweet_date * 1000);
+                var day = date.getDate();
+                var daysAgo = (todaysDate - day);
+                var latLng = new google.maps.LatLng(latitude, longitude);
+                if (daysAgo === 4) {
+                  var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: image
+                  });
+                  marker.setMap(map);
+                  attachSecretMessage(marker, tweet);
+                }
+              }
+            }
+            if (ui.value === 5) {
+              for (var j = 0; j < data.length; j++) {
+                var latitude = data[j].latitude;
+                var longitude = data[j].longitude;
+                var tweet = data[j].tweet_text;
+                var image = "Sick_Emoji.png";
+                var date = new Date(data[j].tweet_date * 1000);
+                var day = date.getDate();
+                var daysAgo = (todaysDate - day);
+                var latLng = new google.maps.LatLng(latitude, longitude);
+                if (daysAgo === 5) {
+                  var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: image
+                  });
+                  marker.setMap(map);
+                  attachSecretMessage(marker, tweet);
+                }
+              }
+            }
+            if (ui.value === 6) {
+              for (var j = 0; j < data.length; j++) {
+                var latitude = data[j].latitude;
+                var longitude = data[j].longitude;
+                var tweet = data[j].tweet_text;
+                var image = "Sick_Emoji.png";
+                var date = new Date(data[j].tweet_date * 1000);
+                var day = date.getDate();
+                var daysAgo = (todaysDate - day);
+                var latLng = new google.maps.LatLng(latitude, longitude);
+                if (daysAgo === 6) {
+                  var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: image
+                  });
+                  marker.setMap(map);
+                  attachSecretMessage(marker, tweet);
+                }
+              }
+            }
+            if (ui.value === 7) {
+              for (var j = 0; j < data.length; j++) {
+                var latitude = data[j].latitude;
+                var longitude = data[j].longitude;
+                var tweet = data[j].tweet_text;
+                var image = "Sick_Emoji.png";
+                var date = new Date(data[j].tweet_date * 1000);
+                var day = date.getDate();
+                var daysAgo = (todaysDate - day);
+                var latLng = new google.maps.LatLng(latitude, longitude);
+                if (daysAgo === 7) {
+                  var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: image
+                  });
+                  marker.setMap(map);
+                  attachSecretMessage(marker, tweet);
+                }
               }
             }
           }
