@@ -41,6 +41,14 @@ $(document).ready(function() {
         // }
       // }
 
+      //create markers array and define remove function
+      var gMarkers = [];
+      function removeMarkers(){
+        for(i=0; i<gMarkers.length; i++){
+          gMarkers[i].setMap(null);
+        }
+      }
+
       // find date groups
       var start = Date.now();
       var today = new Date(start);
@@ -60,6 +68,13 @@ $(document).ready(function() {
           infowindow.close();
         })
       }
+
+      //clear markers from map
+      function clearMarkers() {
+        setMapOnAll(null);
+      }
+
+      //slider functionality
       $( function() {
         $( "#slider" ).slider({
           animate: "fast",
@@ -70,6 +85,7 @@ $(document).ready(function() {
           change: function( event, ui ) {
             $( "#amount" ).val( ui.value );
             if (ui.value === 0) {
+              removeMarkers();
               for (var j = 0; j < data.length; j++) {
                 var latitude = data[j].latitude;
                 var longitude = data[j].longitude;
@@ -80,18 +96,19 @@ $(document).ready(function() {
                 var daysAgo = (todaysDate - day);
                 var latLng = new google.maps.LatLng(latitude, longitude);
                 if (daysAgo === 0) {
-                  // ui.value = 0;
                   var marker = new google.maps.Marker({
                     position: latLng,
                     map: map,
                     icon: image
                   });
                   marker.setMap(map);
+                  gMarkers.push(marker);
                   attachSecretMessage(marker, tweet);
                 }
               }
             }
             if (ui.value === 1) {
+              removeMarkers();
               for (var j = 0; j < data.length; j++) {
                 var latitude = data[j].latitude;
                 var longitude = data[j].longitude;
@@ -108,11 +125,13 @@ $(document).ready(function() {
                     icon: image
                   });
                   marker.setMap(map);
+                  gMarkers.push(marker);
                   attachSecretMessage(marker, tweet);
                 }
               }
             }
             if (ui.value === 2) {
+              removeMarkers();
               for (var j = 0; j < data.length; j++) {
                 var latitude = data[j].latitude;
                 var longitude = data[j].longitude;
@@ -129,11 +148,13 @@ $(document).ready(function() {
                     icon: image
                   });
                   marker.setMap(map);
+                  gMarkers.push(marker);
                   attachSecretMessage(marker, tweet);
                 }
               }
             }
             if (ui.value === 3) {
+              removeMarkers();
               for (var j = 0; j < data.length; j++) {
                 var latitude = data[j].latitude;
                 var longitude = data[j].longitude;
@@ -150,11 +171,13 @@ $(document).ready(function() {
                     icon: image
                   });
                   marker.setMap(map);
+                  gMarkers.push(marker);
                   attachSecretMessage(marker, tweet);
                 }
               }
             }
             if (ui.value === 4) {
+              removeMarkers();
               for (var j = 0; j < data.length; j++) {
                 var latitude = data[j].latitude;
                 var longitude = data[j].longitude;
@@ -171,11 +194,13 @@ $(document).ready(function() {
                     icon: image
                   });
                   marker.setMap(map);
+                  gMarkers.push(marker);
                   attachSecretMessage(marker, tweet);
                 }
               }
             }
             if (ui.value === 5) {
+              removeMarkers();
               for (var j = 0; j < data.length; j++) {
                 var latitude = data[j].latitude;
                 var longitude = data[j].longitude;
@@ -192,11 +217,13 @@ $(document).ready(function() {
                     icon: image
                   });
                   marker.setMap(map);
+                  gMarkers.push(marker);
                   attachSecretMessage(marker, tweet);
                 }
               }
             }
             if (ui.value === 6) {
+              removeMarkers();
               for (var j = 0; j < data.length; j++) {
                 var latitude = data[j].latitude;
                 var longitude = data[j].longitude;
@@ -213,11 +240,13 @@ $(document).ready(function() {
                     icon: image
                   });
                   marker.setMap(map);
+                  gMarkers.push(marker);
                   attachSecretMessage(marker, tweet);
                 }
               }
             }
             if (ui.value === 7) {
+              removeMarkers();
               for (var j = 0; j < data.length; j++) {
                 var latitude = data[j].latitude;
                 var longitude = data[j].longitude;
@@ -234,6 +263,7 @@ $(document).ready(function() {
                     icon: image
                   });
                   marker.setMap(map);
+                  gMarkers.push(marker);
                   attachSecretMessage(marker, tweet);
                 }
               }
