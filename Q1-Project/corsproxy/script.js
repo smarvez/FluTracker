@@ -2,7 +2,7 @@ var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 2,
-    center: {lat: 2.8, lng: -187.3},
+    center: {lat: 0, lng: 0},
     mapTypeId: 'terrain'
   });
 }
@@ -76,7 +76,7 @@ $(document).ready(function() {
       function clearMarkers() {
         setMapOnAll(null);
       }
-
+      // $('#amount').val(ui.value) = 0
       //slider functionality
       $( function() {
         $( "#slider" ).slider({
