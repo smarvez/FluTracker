@@ -10,8 +10,8 @@ function initMap() {
 $(document).ready(function() {
 
   var linkH = "https://g-flutrack.herokuapp.com/";
-  var search = '?s=feverANDcoughORfever';
-  var aggravated = '?a=TRUE';
+  // var search = '?s=feverANDcoughORfever';
+  // var aggravated = '?a=TRUE';
   var resultsInLastNumDays = '?time=7';
   var newLink = linkH + resultsInLastNumDays;
 
@@ -275,5 +275,36 @@ $(document).ready(function() {
         });
         $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
       } );
+
+      //user input geocoding//
+      var geocoder = new google.maps.Geocoder();
+      var favoriteZips = JSON.parse(localStorage.getItem("address")) || [];
+
+      $('#onclick').click(function() {
+        event.preventDefault();
+        var address = $('#userInput').val();
+        favoriteZips.push(address);
+        localStorage.setItem('address', JSON.stringify(favoriteZips));
+        geocodeAddress(geocoder, map);
+        function geocodeAddress(geocoder, resultsMap) {
+          // var address = $('#userInput').val();
+
+        // var address = document.getElementById('address').value;
+          geocoder.geocode({'address': address}, function(results, status) {
+            if (status === 'OK') {
+              console.log(address);
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+            map.setZoom(5);
+            } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+            }
+          });
+        }
+      })
+      console.log(JSON.parse(localStorage.getItem("address")));
     })
 })

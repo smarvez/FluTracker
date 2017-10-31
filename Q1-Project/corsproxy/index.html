@@ -17,7 +17,18 @@
   <body>
     <div class="container">
       <header class="header">
+        <div class="title">
         <h1>Flu Tracker!!</h1>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Dropdown</button>
+          <div class="dropdown-content">
+            <form>
+              <input id="userInput" type="text" name="zip" placeholder="Zip Code"><br>
+              <input id="onclick" type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
       </header>
       <div id="map"></div>
         <script async defer
@@ -31,9 +42,8 @@
           <div id="slider"></div>
         </div>
         <div class="nested">
-          <div class="zipcode">
-            <input class="zipbox" type="text" name="zip code" value="zip code" placeholder="Zip Code">
-            <input id="button" type="submit" value="Submit">
+          <div class="showall">
+            <button type="button" name="button"></button>
           </div>
           <!-- <div class="second">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -45,8 +55,8 @@
               Excepteur sint occaecat cupidatat non proident, sunt in
               culpa qui officia deserunt mollit anim id est laborum.</p>
           </div> -->
-        </div>
-        <footer class="footer">
+        <!-- </div> -->
+        <!-- <footer class="footer">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing
             elit, sed do eiusmod tempor incididunt ut labore et dolore
             magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -55,7 +65,7 @@
             voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.</p>
-        </footer>
+        </footer> -->
     </div>
   </body>
 </html>
