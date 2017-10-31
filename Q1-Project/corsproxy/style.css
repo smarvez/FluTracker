@@ -1,37 +1,70 @@
 html, body {
-  height: 100%;
+  /*height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 0;*/
 }
 
 .container {
-  width: 100vw;
-  height: 100vh;
-
+  background-color: #eee;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 1em;
+  grid-auto-rows: repeat(36, 1fr);
+  justify-content: stretch;
+  align-items: stretch;
 }
 
 .header {
-  height: 10%;
-  width: 100%;
+  background-color: #ddd;
+  grid-column: 1/4;
 }
 
 #map {
-  border: 2px solid black;
-  /*margin: 10px;*/
-  height: 70%;
-  width: 100%;
+  background-color: #ddd;
+  grid-column: 1/4;
+  grid-row: 2/34;
+
 }
 
 .bottom-left {
-  margin: 10px;
+  background-color: #ddd;
+  /*grid-column: 1/3;*/
+  padding-left: 20px;
+  padding-bottom: 20px;
 }
 
 #slider {
    /*border: 2px solid red;*/
    height: 12px;
-   width: 100%;
+   width: 95%;
+   align-self: center;
 }
 
-.bottom-right {
+.nested {
+  display: grid;
+  background-color: pink;
+  /*grid-column: 3/4;*/
+  grid-gap: 1em;
+  padding: 1em;
+}
+
+.zipcode {
+  align-items: center;
+  padding-top: 3px;
+  padding-left: 5px;
+}
+
+#button {
+
+}
+
+.nested > div {
+  border: #333 1px solid;
+}
+
+.footer {
+  background-color: darkgrey;
+  grid-column: 1/4;
 
 }
