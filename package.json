@@ -1,0 +1,23 @@
+{
+  "name": "q1-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mocha": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smarvez/Q1-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smarvez/Q1-Project/issues"
+  },
+  "homepage": "https://github.com/smarvez/Q1-Project#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}

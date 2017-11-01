@@ -1,3 +1,11 @@
+// var gMarkers = [];
+// function removeMarkers(){
+//   for(i=0; i<gMarkers.length; i++){
+//     gMarkers[i].setMap(null);
+//   }
+//   return gMarkers;
+// }
+
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -34,7 +42,9 @@ $(document).ready(function() {
       // find date groups
       var start = Date.now();
       var today = new Date(start);
+      var todaysHour = today.getHours();
       var todaysDate = today.getDate();
+      console.log(start);
 
       // add today's markers to map
       for (var j = 0; j < data.length; j++) {
@@ -83,7 +93,7 @@ $(document).ready(function() {
           animate: "fast",
           range: "max",
           min: 0,
-          max: 7,
+          max: 6,
           value: 0,
           change: function( event, ui ) {
             $( "#amount" ).val( ui.value );
@@ -110,6 +120,7 @@ $(document).ready(function() {
                 }
               }
             }
+
             if (ui.value === 1) {
               removeMarkers();
               for (var j = 0; j < data.length; j++) {
@@ -118,8 +129,11 @@ $(document).ready(function() {
                 var tweet = data[j].tweet_text;
                 var image = "Sick_Emoji.png";
                 var date = new Date(data[j].tweet_date * 1000);
-                var day = date.getDate();
-                var daysAgo = (todaysDate - day);
+                // var day = date.getDate();
+                if ((start - date) > 86400000 && (start - date) < 172800000) {
+                  var daysAgo = 1;
+                }
+                // var daysAgo = (todaysDate - day);
                 var latLng = new google.maps.LatLng(latitude, longitude);
                 if (daysAgo === 1) {
                   var marker = new google.maps.Marker({
@@ -144,6 +158,9 @@ $(document).ready(function() {
                 var day = date.getDate();
                 var daysAgo = (todaysDate - day);
                 var latLng = new google.maps.LatLng(latitude, longitude);
+                if ((start - date) > 172800000 && (start - date) < 259200000) {
+                  var daysAgo = 2;
+                }
                 if (daysAgo === 2) {
                   var marker = new google.maps.Marker({
                     position: latLng,
@@ -167,6 +184,9 @@ $(document).ready(function() {
                 var day = date.getDate();
                 var daysAgo = (todaysDate - day);
                 var latLng = new google.maps.LatLng(latitude, longitude);
+                if ((start - date) > 259200000 && (start - date) < 345600000) {
+                  var daysAgo = 3;
+                }
                 if (daysAgo === 3) {
                   var marker = new google.maps.Marker({
                     position: latLng,
@@ -190,6 +210,9 @@ $(document).ready(function() {
                 var day = date.getDate();
                 var daysAgo = (todaysDate - day);
                 var latLng = new google.maps.LatLng(latitude, longitude);
+                if ((start - date) > 345600000 && (start - date) < 432000000) {
+                  var daysAgo = 4;
+                }
                 if (daysAgo === 4) {
                   var marker = new google.maps.Marker({
                     position: latLng,
@@ -213,6 +236,9 @@ $(document).ready(function() {
                 var day = date.getDate();
                 var daysAgo = (todaysDate - day);
                 var latLng = new google.maps.LatLng(latitude, longitude);
+                if ((start - date) > 432000000 && (start - date) < 518400000) {
+                  var daysAgo = 5;
+                }
                 if (daysAgo === 5) {
                   var marker = new google.maps.Marker({
                     position: latLng,
@@ -236,6 +262,9 @@ $(document).ready(function() {
                 var day = date.getDate();
                 var daysAgo = (todaysDate - day);
                 var latLng = new google.maps.LatLng(latitude, longitude);
+                if ((start - date) > 518400000 && (start - date) < 604800000) {
+                  var daysAgo = 6;
+                }
                 if (daysAgo === 6) {
                   var marker = new google.maps.Marker({
                     position: latLng,
@@ -248,29 +277,32 @@ $(document).ready(function() {
                 }
               }
             }
-            if (ui.value === 7) {
-              removeMarkers();
-              for (var j = 0; j < data.length; j++) {
-                var latitude = data[j].latitude;
-                var longitude = data[j].longitude;
-                var tweet = data[j].tweet_text;
-                var image = "Sick_Emoji.png";
-                var date = new Date(data[j].tweet_date * 1000);
-                var day = date.getDate();
-                var daysAgo = (todaysDate - day);
-                var latLng = new google.maps.LatLng(latitude, longitude);
-                if (daysAgo === 7) {
-                  var marker = new google.maps.Marker({
-                    position: latLng,
-                    map: map,
-                    icon: image
-                  });
-                  marker.setMap(map);
-                  gMarkers.push(marker);
-                  attachSecretMessage(marker, tweet);
-                }
-              }
-            }
+            // if (ui.value === 7) {
+            //   removeMarkers();
+            //   for (var j = 0; j < data.length; j++) {
+            //     var latitude = data[j].latitude;
+            //     var longitude = data[j].longitude;
+            //     var tweet = data[j].tweet_text;
+            //     var image = "Sick_Emoji.png";
+            //     var date = new Date(data[j].tweet_date * 1000);
+            //     var day = date.getDate();
+            //     var daysAgo = (todaysDate - day);
+            //     var latLng = new google.maps.LatLng(latitude, longitude);
+            //     if ((start - date) > 604800000) {
+            //       var daysAgo = 6;
+            //     }
+            //     if (daysAgo === 7) {
+            //       var marker = new google.maps.Marker({
+            //         position: latLng,
+            //         map: map,
+            //         icon: image
+            //       });
+            //       marker.setMap(map);
+            //       gMarkers.push(marker);
+            //       attachSecretMessage(marker, tweet);
+            //     }
+            //   }
+            // }
           }
         });
         $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
