@@ -762,10 +762,10 @@ button.ui-button::-moz-focus-inner {
 	top: -.3em;
 	margin-left: -.6em;
 	border-radius: 35%;
-	background-color: #f41177;
+	background-color: #faa814;
 }
 .ui-slider-horizontal .ui-slider-range {
-	background-color: #f2f5f9;
+	background-color: #d9eae8;
 	top: 0;
 	height: 100%;
 }

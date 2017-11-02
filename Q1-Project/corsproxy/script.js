@@ -575,8 +575,12 @@ $(document).ready(function() {
       $('#onclick').click(function() {
         event.preventDefault();
         var address = $('#userInput').val();
-        favoriteZips.push(address);
-        localStorage.setItem('address', JSON.stringify(favoriteZips));
+        // favoriteZips.push(address);
+        localStorage.setItem('address', JSON.stringify(address));
+        let zipcode = JSON.parse(localStorage.getItem('address'));
+        if (localStorage.hasOwnProperty('address')) {
+          $('#userInput')[0].value = zipcode;
+        }
         geocodeAddress(geocoder, map);
         function geocodeAddress(geocoder, resultsMap) {
           // var address = $('#userInput').val();
