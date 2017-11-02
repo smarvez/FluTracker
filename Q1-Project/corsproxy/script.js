@@ -8,6 +8,8 @@ function removeMarkers(){
   return gMarkers;
 }
 
+//set zip code to user favorite using local storage
+
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -315,17 +317,10 @@ $(document).ready(function() {
         })
       }
 
-      //clear markers from map
-      // function clearMarkers() {
-      //   setMapOnAll(null);
-      // }
-      // $('#amount').val(ui.value) = 0
       //slider functionality
 
       $( function() {
         $('#amount').val(0);
-        // var iValue = 0;
-        // $("#lbl").text(iValue);
         $( "#slider" ).slider({
           animate: "fast",
           range: "max",
@@ -542,12 +537,7 @@ $(document).ready(function() {
             }
           }
         });
-        // $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
       } );
-
-      //user input geocoding//
-      var geocoder = new google.maps.Geocoder();
-      var favoriteZips = JSON.parse(localStorage.getItem("address")) || [];
 
       //Show all markers from past week
       $('#button2').click(function() {
@@ -572,20 +562,26 @@ $(document).ready(function() {
         }
       })
 
+      //user input geocoding//
+      var geocoder = new google.maps.Geocoder();
+      var favoriteZips = JSON.parse(localStorage.getItem("address")) || [];
+
+      $('#trigger').click( function(){
+        $('#drop').toggle();
+      });
+
+      $('#check').click(function(){
+        if(localStorage)
+          $('#userInput').val(favoriteZips)
+            console.log(favoriteZips);
+      });
+
       $('#onclick').click(function() {
         event.preventDefault();
         var address = $('#userInput').val();
-        // favoriteZips.push(address);
         localStorage.setItem('address', JSON.stringify(address));
-        let zipcode = JSON.parse(localStorage.getItem('address'));
-        if (localStorage.hasOwnProperty('address')) {
-          $('#userInput')[0].value = zipcode;
-        }
         geocodeAddress(geocoder, map);
         function geocodeAddress(geocoder, resultsMap) {
-          // var address = $('#userInput').val();
-
-        // var address = document.getElementById('address').value;
           geocoder.geocode({'address': address}, function(results, status) {
             if (status === 'OK') {
               console.log(address);
@@ -601,6 +597,6 @@ $(document).ready(function() {
           });
         }
       })
-      console.log(JSON.parse(localStorage.getItem("tweet")));
+      // console.log(JSON.parse(localStorage.getItem("tweet")));
     })
 })
