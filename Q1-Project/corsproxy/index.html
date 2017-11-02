@@ -20,11 +20,25 @@
         <div class="title">
         <h1>Flu Tracker</h1>
         </div>
+        <!-- <div class="subtitle">
+          <h4>Monitoring sickness and oversharing worldwide</h4>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Check My Area <shape="default" coords="" href="#" alt=""></button>
+          <div class="dropdown-content">
+            <form>
+              <input id="userInput" type="text" name="zip" placeholder="Zip Code">
+              <input id="onclick" type="submit" value="Enter">
+            </form>
+          </div>
+        </div> -->
+      </header>
+      <nav class="nav">
         <div class="subtitle">
           <h4>Monitoring sickness and oversharing worldwide</h4>
         </div>
         <div class="dropdown">
-          <button class="dropbtn">Check My <area shape="default" coords="" href="#" alt=""></button>
+          <button class="dropbtn">Check My Area <shape="default" coords="" href="#" alt=""></button>
           <div class="dropdown-content">
             <form>
               <input id="userInput" type="text" name="zip" placeholder="Zip Code">
@@ -32,7 +46,7 @@
             </form>
           </div>
         </div>
-      </header>
+      </nav>
       <div id="map"></div>
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjkx5ENWt1g8g7pxnMXrKSSJQh0H1Z-fM&callback=initMap">
@@ -40,43 +54,13 @@
         <div class="bottom-left">
           <p>
             <label for="days">Number of Days Ago:</label>
-            <input type="text" id="amount" readonly style="border:0; background-color:#eee; color:#f6931f; font-weight:bold; font-size1:20px">
+            <input type="text" id="amount" value="0" readonly style="border:0; background-color:#eee; color:#f6931f; font-weight:bold; font-size:16px">
           </p>
-          <div id="slider"></div>
-        </div>
-        <div class="nested">
-          <button class="button2" name="button">
-            <input id="showbtn" type="submit" value="Show Past 7 Days">
-          </button>
-          <!-- <div class="showall">
-            <form>
-              <input id="showbtn" type="submit" value="Show Past 7 Days">
-            </form>
-          </div> -->
-          <!-- <div class="showall">
-            <button type="button" name="button"></button>
-          </div> -->
-          <!-- <div class="second">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div> -->
-        <!-- </div> -->
-        <!-- <footer class="footer">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-            elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.</p>
-        </footer> -->
+        <div id="slider"></div>
+      </div>
+      <div class="nested">
+        <button id="button2" name="button">Past Week total</button>
+      </div>
     </div>
   </body>
 </html>

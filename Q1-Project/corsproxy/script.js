@@ -1,27 +1,31 @@
-// var gMarkers = [];
-// function removeMarkers(){
-//   for(i=0; i<gMarkers.length; i++){
-//     gMarkers[i].setMap(null);
-//   }
-//   return gMarkers;
-// }
+//create markers array and define remove function
+
+var gMarkers = [];
+function removeMarkers(){
+  for(i=0; i<gMarkers.length; i++){
+    gMarkers[i].setMap(null);
+  }
+  return gMarkers;
+}
 
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 2,
     center: {lat: 0, lng: 0},
+    container: 'map',
     mapTypeId: 'terrain'
   });
 }
 
+
 $(document).ready(function() {
 
+  $('#amount').val(0);
   var linkH = "https://g-flutrack.herokuapp.com/";
-  // var search = '?s=feverANDcoughORfever';
-  // var aggravated = '?a=TRUE';
   var resultsInLastNumDays = '?time=7';
   var newLink = linkH + resultsInLastNumDays;
+  var favoriteTweets = JSON.parse(localStorage.getItem("tweet")) || [];
 
   let $xhr = $.getJSON(newLink);
 
@@ -29,22 +33,14 @@ $(document).ready(function() {
 
       if ($xhr.status !== 200) {
       }
-      console.log(data);
-
-      //create markers array and define remove function
-      var gMarkers = [];
-      function removeMarkers(){
-        for(i=0; i<gMarkers.length; i++){
-          gMarkers[i].setMap(null);
-        }
-      }
+      // console.log(data);
 
       // find date groups
       var start = Date.now();
       var today = new Date(start);
       var todaysHour = today.getHours();
       var todaysDate = today.getDate();
-      console.log(start);
+
 
       // add today's markers to map
       for (var j = 0; j < data.length; j++) {
@@ -65,6 +61,10 @@ $(document).ready(function() {
           marker.setMap(map);
           gMarkers.push(marker);
           attachSecretMessage(marker, tweet);
+          marker.addListener('click', function() {
+            favoriteTweets.push(tweet);
+            localStorage.setItem('tweet', JSON.stringify(favoriteTweets));
+          })
         }
       }
 
@@ -83,12 +83,16 @@ $(document).ready(function() {
       }
 
       //clear markers from map
-      function clearMarkers() {
-        setMapOnAll(null);
-      }
+      // function clearMarkers() {
+      //   setMapOnAll(null);
+      // }
       // $('#amount').val(ui.value) = 0
       //slider functionality
+
       $( function() {
+        $('#amount').val(0);
+        // var iValue = 0;
+        // $("#lbl").text(iValue);
         $( "#slider" ).slider({
           animate: "fast",
           range: "max",
@@ -277,40 +281,62 @@ $(document).ready(function() {
                 }
               }
             }
-            // if (ui.value === 7) {
-            //   removeMarkers();
-            //   for (var j = 0; j < data.length; j++) {
-            //     var latitude = data[j].latitude;
-            //     var longitude = data[j].longitude;
-            //     var tweet = data[j].tweet_text;
-            //     var image = "Sick_Emoji.png";
-            //     var date = new Date(data[j].tweet_date * 1000);
-            //     var day = date.getDate();
-            //     var daysAgo = (todaysDate - day);
-            //     var latLng = new google.maps.LatLng(latitude, longitude);
-            //     if ((start - date) > 604800000) {
-            //       var daysAgo = 6;
-            //     }
-            //     if (daysAgo === 7) {
-            //       var marker = new google.maps.Marker({
-            //         position: latLng,
-            //         map: map,
-            //         icon: image
-            //       });
-            //       marker.setMap(map);
-            //       gMarkers.push(marker);
-            //       attachSecretMessage(marker, tweet);
-            //     }
-            //   }
-            // }
+            if (ui.value === 7) {
+              removeMarkers();
+              for (var j = 0; j < data.length; j++) {
+                var latitude = data[j].latitude;
+                var longitude = data[j].longitude;
+                var tweet = data[j].tweet_text;
+                var image = "Sick_Emoji.png";
+                var date = new Date(data[j].tweet_date * 1000);
+                var day = date.getDate();
+                var daysAgo = (todaysDate - day);
+                var latLng = new google.maps.LatLng(latitude, longitude);
+                if ((start - date) > 604800000) {
+                  var daysAgo = 6;
+                }
+                if (daysAgo === 7) {
+                  var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: image
+                  });
+                  marker.setMap(map);
+                  gMarkers.push(marker);
+                  attachSecretMessage(marker, tweet);
+                }
+              }
+            }
           }
         });
-        $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
+        // $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
       } );
 
       //user input geocoding//
       var geocoder = new google.maps.Geocoder();
-      var favoriteZips = JSON.parse(localStorage.getItem("address")) || [];
+
+      //Show all markers from past week
+      $('#button2').click(function() {
+        event.preventDefault();
+        for (var j = 0; j < data.length; j++) {
+          var latitude = data[j].latitude;
+          var longitude = data[j].longitude;
+          var tweet = data[j].tweet_text;
+          var image = "Sick_Emoji.png";
+          var date = new Date(data[j].tweet_date * 1000);
+          var day = date.getDate();
+          var daysAgo = (todaysDate - day);
+          var latLng = new google.maps.LatLng(latitude, longitude);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: image
+          });
+          marker.setMap(map);
+          gMarkers.push(marker);
+          attachSecretMessage(marker, tweet);
+        }
+      })
 
       $('#onclick').click(function() {
         event.preventDefault();
@@ -337,6 +363,6 @@ $(document).ready(function() {
           });
         }
       })
-      console.log(JSON.parse(localStorage.getItem("address")));
+      console.log(JSON.parse(localStorage.getItem("tweet")));
     })
 })

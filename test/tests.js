@@ -5,3 +5,15 @@ describe('removes markers', function () {
     expect(removeMarkers()).to.deep.equal([])
   })
 })
+
+describe('initMap', function () {
+  it('is a function', function () {
+    expect(initMap).to.be.a('function')
+  })
+})
+
+describe('attachSecretMessage', function () {
+  it('is a function', function () {
+    expect(attachSecretMessage).to.be.a('function')
+  })
+})
